@@ -1,0 +1,8 @@
+.data {
+	display: block;
+	margin-top: 20px;
+}
+#button {
+	display: block;
+	margin: 25px 0;
+}
