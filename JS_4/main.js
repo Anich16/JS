@@ -10,24 +10,56 @@ function creatingArr (arr) {
 return newArr;
 }
 
-function f (string) {
-	var newString = string.toLowerCase();
+//function for palindrome definition
+function definePalindrome (str) {
+	var newStr = str.toUpperCase ().split("");
 	var arr = [];
-	arr = newString.split('');
-	var newArr = [];
-	newArr = arr.reverse();
-for (var i  = 0; i < newArr.length; i++){
-	for (var j = i; j < arr.lengt; j++){
-        if (newArr[0] != arr[0]){
-      	 break;
-        }	 
-        else if (newArr[i] == arr[j]){
-            alert("Слово является полидромом");
-        } else {
-		alert("Слово не является полидромом");
+	var isPalindrome = true;
+	var reverseArr = [];
+	var i;
+
+	for (i = 0; i < newStr.length; i++) {
+		if (newStr[i] != " ") {
+			arr.push(newStr[i]);
 		}
+	}
+	
+	for(i = 0; i < arr.length; i++) {
+		reverseArr.push(arr[i]);
+	}
+	reverseArr.reverse();
+	
+	for (i = 0; i < arr.length; i++ ) {
+		if (arr[i] != reverseArr[i]) {
+			isPalindrom = false;
+			break;
+		}
+	 
+    }
+	
+	if (isPalindrom) {
+    	alert("Это слово палиндром");
+    } else {
+		alert("Слово не является палиндромом");
+	}
+}
 
 
+//function for palindrome definition more efficient
+function definePalindrome (str) {
+	var newStr = str.toUpperCase ().split("");
+	var arr = [];
+	
+	for (var i = 0; i < newStr.length; i++) {
+		if (newStr[i] != " ") {
+			arr.push(newStr[i]);
+		}
 	}
-	}
+	for (var j = 0; j < arr.length / 2; j++) {
+		if (arr [j] != arr[arr.length- 1 - j] ) {
+			alert("Это слово не является палиндромом");
+			return;
+		}
+    }
+	alert("Это слово палиндром");
 }
