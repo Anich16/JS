@@ -27,3 +27,8 @@
     font-size: 20px;
     font-weight: 800;
 }
+
+.today {
+    background-color: #131d3e;
+    border: 1px solid #000;
+}

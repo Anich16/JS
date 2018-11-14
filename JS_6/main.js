@@ -8,18 +8,31 @@ var dateLast = new Date(year, month + 1, 0).getDate(), //find out data of the la
 function drowEmptyItemsStart () { // Draw empty cells before the start of the month
     if (dayFirst != 0) {
         for (var i = 1; i < dayFirst; i++) {
-            calendar + = "<td>";
+            calendar += "<td>";
         }
     } else {
         for (var i = 0; i < 6; i++){
-            calendar + = "<td>";
+            calendar += "<td>";
         }
     }
 }
 
 function drawEmptyItemsEnd () { // Draw empty cells to the end of the table 
     for (var i = 0; i < 7 - dayLast; i++) {
-        calendar + = "<td>";
+        calendar += "<td>";
     }
 }
 
+function creatCalendar () {
+    for (var i = 1; i <= dayLast; i++) {
+        if (i == new Date().getDate() && days.getFullYear() == new Date().getFullYear() && days.getMonth() == new Date().getMonth()) {
+            calendar += "<td class='today'>" + i;
+        } else {
+            calendar += "<td>" + i;
+        }
+
+        if (new Date(days.getFullYear(), days.getMonth(), i).getDay() == 0) {
+            clendar += "<tr>"
+        }
+    }
+}
