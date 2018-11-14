@@ -20,7 +20,7 @@ function searchElement () { // Create an array of words that match the search va
     }
 
     for(var i = 0; i < vocabulary.length; i++) {
-        if (vocabulary[i].includes(partWord)) {
+        if (vocabulary[i].indexOf(partWord) == 0) {
             arrResult.push(vocabulary[i]);
         }
     }
