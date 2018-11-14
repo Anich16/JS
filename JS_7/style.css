@@ -1,0 +1,22 @@
+body {
+	margin: 20px 0 0 25px;
+	width: 500px;
+}
+.form-control {
+	display: inline-block;
+	padding: 4px;
+	width: 250px;
+    margin-left: 15px;
+    margin-bottom: 25px;
+}
+.btn {
+	width: 75px;
+	height: 32px;
+}
+.list-group {
+	list-style: none;
+}
+.list-group-item:hover {
+	background-color: #528c51;
+	color: #fff;
+}
