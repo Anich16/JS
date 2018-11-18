@@ -8,19 +8,19 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form id="form-block">
-        <label for="" class="label">Введите ваше имя: <input type="text" id="name" name="name" placeholder="Ваше имя" pattern="[A-Za-z]" class="field" required></label>
-        <label for="" class="label">Введите ваш Email: <input type="email" id="email" name="email" placeholder="Email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}" class="field" required></label>
-        <label for="" class="label">Придумайте свой пароль: <input type="password" id="password" name="password" placeholder="Ваш пароль" pattern="[A-Za-z0-9]{8-12}" class="field" required></label>
-        <label for="" class="label">Повторить ваш пароль: <input type="password" id="repeatPassword" name="repeatPassword" placeholder="Повторите пароль" pattern="[A-Za-z0-9]{8-12}" class="field" required></label>
-        <label for="" class="label">Укажите пол: <select name="Gender" id="gender">
-            <option disabled>Укажите пол: </option>
-            <option value="Man">Муж.</option>
-            <option value="Woman">Жен.</option>
-        </select>
+    <form id="form-block" method="get" action="" name="form1" novalidate>
+        <label for="name" class="label">Введите ваше имя: <input type="text" id="name" name="name" placeholder="Ваше имя" pattern="[A-Za-zА-Яа-яЁё]" class="field" required></label>
+        <label for="email" class="label">Введите ваш Email: <input type="email" id="email" name="email" placeholder="Email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}" class="field" required></label>
+        <label for="password" class="label">Придумайте свой пароль: <input type="password" pattern="[A-Za-z0-9]{8,12}" name="password" placeholder="Ваш пароль"  class="field" required></label>
+        <label for="repeatPassword" class="label">Повторить ваш пароль: <input type="password" name="repeatPassword" placeholder="Повторите пароль" class="field" ></label>
+        <label for="gender" class="label">Укажите пол: 
+            <select type="select" name="gender">
+                <option value="man">Муж.</option>
+                <option value="woman">Жен.</option>
+            </select>
         </label>
-        <button type="submit" name="submit" id="btn-submit">Подтвердить</button>
-        <button type="reset" name="reset" id="btn-reset">Отмена</button>
+        <button type="button" name="btnSubmit">Подтвердить</button>
+        <button type="reset" name="reset">Отмена</button>
     </form>
 
     <script src="main.js"></script>
