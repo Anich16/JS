@@ -1,11 +1,10 @@
-var dateLast = new Date(year, month + 1, 0).getDate(), //find out data of the last day of the month
-    days = new Date(year, month, dayLast), // determine the number of days in a month
-    dayFirst = new Date(days.getFullYear, days.getMonth, 1).getDate(), // the first day of the month
-    dayLast = new Date(daya.getFullYear, days.getMonth, dateLast).getDate(), // the last day of the month
-    month = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
-    calendar = "<tr>";
+arrowBack = document.getElementById("arrow-back"),
+arrowForward = document.getElementById("arrow-forward"),
+monthYear = document.getElementById("month-year");
 
-function drowEmptyItemsStart () { // Draw empty cells before the start of the month
+creatCalendar (calendar, new Date().getFullYear(), new Date().getMonth()); // Draw full calendar
+
+function drawEmptyItemsStart (dayFirst, calendar) { // Draw empty cells before the start of the month
     if (dayFirst != 0) {
         for (var i = 1; i < dayFirst; i++) {
             calendar += "<td>";
@@ -15,24 +14,57 @@ function drowEmptyItemsStart () { // Draw empty cells before the start of the mo
             calendar += "<td>";
         }
     }
+    return calendar;
 }
 
-function drawEmptyItemsEnd () { // Draw empty cells to the end of the table 
+function drawEmptyItemsEnd (dayLast, calendar) { // Draw empty cells to the end of the table 
     for (var i = 0; i < 7 - dayLast; i++) {
         calendar += "<td>";
     }
+    return calendar;
 }
 
-function creatCalendar () {
-    for (var i = 1; i <= dayLast; i++) {
+function creatCalendar (id, year, month) {
+    var dateLast = new Date(year, month + 1, 0).getDate(), //find out data of the last day of the month
+        days = new Date(year, month, dateLast), // determine the number of days in a month
+        dayFirst = new Date(days.getFullYear(), days.getMonth(), 1).getDay(), // the first day of the month
+        dayLast = new Date(days.getFullYear(), days.getMonth(), dateLast).getDay(), // the last day of the month
+        month = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
+        calendar = "<tr>";
+
+    calendar = drawEmptyItemsStart (dayFirst, calendar);
+
+    for (var i = 1; i <= dateLast; i++) {
         if (i == new Date().getDate() && days.getFullYear() == new Date().getFullYear() && days.getMonth() == new Date().getMonth()) {
             calendar += "<td class='today'>" + i;
         } else {
-            calendar += "<td>" + i;
+            calendar += "<td class='day'>" + i;
         }
 
         if (new Date(days.getFullYear(), days.getMonth(), i).getDay() == 0) {
-            clendar += "<tr>"
+            calendar += "<tr>";
         }
     }
+
+   calendar = drawEmptyItemsEnd (dayLast, calendar);
+
+   document.getElementById("calendar-body").innerHTML = calendar;
+   monthYear.innerHTML = month[days.getMonth()] +' '+ days.getFullYear();
+   monthYear.dataset.month = days.getMonth();
+   monthYear.dataset.year = days.getFullYear();
+
+
 }
+
+arrowBack.addEventListener("click", function() {
+    creatCalendar(calendar, monthYear.dataset.year, parseFloat(monthYear.dataset.month) - 1);
+});
+
+arrowForward.addEventListener("click", function() {
+    creatCalendar(calendar, monthYear.dataset.year, parseFloat(monthYear.dataset.month) + 1);
+});
+
+
+
+
+

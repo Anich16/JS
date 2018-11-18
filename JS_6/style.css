@@ -3,32 +3,59 @@
 	color: #fff;
     background: #266bf0;
     opacity: 0.5;
+    user-select: none;
+    font-size: 30px;
 }
 
 .title {
 	display: flex;
     justify-content: space-between;
     padding: 10px;
+    font-size: 20px;
+    
+}
+.day {
+    border: 2px solid transparent;
 }
 
+.day:hover {
+    border: 2px solid #fff;
+}
+
+.calendar-table {
+    padding: 25px;
+    text-align: right;
+}
 .month-year {
     padding: 0;
     margin: 0;
     margin-right: 30px;
-    font-size: 20px;
+    font-size: 30px;
 }
 
 .arrow {
     display: block;
+    cursor: pointer;
+    margin-top: 25px;
 }
 
-.arrow-back, .arrow-forwad {
-	padding: 10px;
-    font-size: 20px;
+
+.back, .forward {
+	padding: 5px;
+    font-size: 40px;
     font-weight: 800;
+    
 }
+.back:hover, .forward:hover {
+    background: #a0b2ed;
+}
+
 
 .today {
-    background-color: #131d3e;
-    border: 1px solid #000;
+    background-color: #a0b2ed;
+    color: #000;
+    border: 2px solid transparent;
+}
+.today:hover {
+    border: 2px solid #000;
 }

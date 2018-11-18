@@ -1,28 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+	<meta charset="utf-8">
 	<title>Calendar</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 	<div class="calendar-block">
 		<div class="title">
-			<h1 class="month-year">Декабрь</h1>
+			<h1  id="month-year" >Декабрь</h1>
 			<div class="arrow">
-				<span class="arrow-back"> < </span>
-				<span class="arrow-forwad"> > </span>
+				<span id="arrow-back" class="back"> < </span>
+				<span id="arrow-forward" class="forward"> > </span>
 			</div>
 		</div>
-		<table id="calendar" cellpadding="5px">
-			<th>
-				<td>Пн</td>
-				<td>Вт</td>
-				<td>Ср</td>
-				<td>Чт</td>
-				<td>Пт</td>
-				<td>Сб</td>
-				<td>Вс</td>
-			</th>
+		<table id="calendar" class="calendar-table" cellpadding="5px">
+			<thead>
+					<td>Пн</td>
+					<td>Вт</td>
+					<td>Ср</td>
+					<td>Чт</td>
+					<td>Пт</td>
+					<td>Сб</td>
+					<td>Вс</td>
+			</thead>
+			<tbody id="calendar-body"></tbody>
 		</table>
 
 	<script src="main.js"></script>
