@@ -12,7 +12,7 @@ var form = document.getElementById("form-block");
 submit.addEventListener("click", sendData);
 reset.addEventListener("click", cancelSending);
 
-function sendData (event) {
+function sendData (event) { // 
     var data = {};
       
     if (validate()) {
@@ -21,11 +21,11 @@ function sendData (event) {
         data.password = inputs.password.value;
         data.gender = inputs.gender.value;
         console.log(data);
-        // form.submit();
+        // form.submit(); // If the function works, the page will reload.
     }
 }
 
-function validate () {
+function validate () { //Checks form validations
     var arrError = []; 
     var isValid = true;
 
@@ -45,25 +45,22 @@ function validate () {
     return isValid;
 }
 
-function clearMessages () {
+function clearMessages () { //Clears error messages
     var errorMessages = form.getElementsByClassName("error-text");
     for (var i = errorMessages.length - 1; i >= 0; i--) {
         errorMessages[i].remove();
     }
 }
 
-function showMessage (field) {
-    var msgError = document.createElement("span");
-    msgError.appendChild(document.createTextNode(errorMessages[field]));
-    msgError.className = "error-text";
-    inputs[field].parentElement.appendChild(msgError);   
+function checkFields (inputs, arrError) { //Checks the filling of fields, where checks each field to fill
+    for (var i = 0; i < inputs.length; i++) {
+        if (!checkField(inputs[i])) {
+            arrError.push(inputs[i].name);
+        }         
+    }
 }
 
-function cancelSending (event) {
-    console.log("Отправка отменена");
-}
-
-function checkField (input) {
+function checkField (input) { //Checks every field to fill.
     var isValid = true;
 
     if (isFieldRequired(input) ) {
@@ -83,6 +80,12 @@ function checkField (input) {
     return isValid;
 }
 
+function checkPasswords (passwordField, repeatPasswordField, arrError) {//Сhecks for password matching
+    if (passwordField.value != repeatPasswordField.value) {
+        arrError.push(repeatPasswordField.name);
+    }
+}
+
 function isFieldRequired (input) {
     return input.hasAttribute("required"); 
 } 
@@ -91,16 +94,13 @@ function isFieldEmpty (input) {
     return input.value == "" || input.value == " ";
 }
 
-function checkFields (inputs, arrError) {
-    for (var i = 0; i < inputs.length; i++) {
-        if (!checkField(inputs[i])) {
-            arrError.push(inputs[i].name);
-        }         
-    }
+function showMessage (field) { 
+    var msgError = document.createElement("span");
+    msgError.appendChild(document.createTextNode(errorMessages[field]));
+    msgError.className = "error-text";
+    inputs[field].parentElement.appendChild(msgError);   
 }
 
-function checkPasswords (passwordField, repeatPasswordField, arrError) {
-    if (passwordField.value != repeatPasswordField.value) {
-        arrError.push(repeatPasswordField.name);
-    }
+function cancelSending (event) {
+    console.log("Отправка отменена");
 }
